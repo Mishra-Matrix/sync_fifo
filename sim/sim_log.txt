@@ -1,0 +1,101 @@
+[2026-11-09 12:59:46 UTC] qrun -batch -access=rw+/. '-timescale' '1ns/1ns' -mfcu design.sv testbench.sv '-voptargs=+acc=npr'  -do  " run -all; exit"  
+QuestaSim-64 qrun 2025.2 Utility 2025.05 May 31 2025
+Start time: 07:59:47 on Nov 09,2026
+qrun -batch -access=rw+/. -timescale 1ns/1ns -mfcu design.sv testbench.sv -voptargs="+acc=npr" -do " run -all; exit" 
+** Note: (qrun-220) 'modelsim.ini' is used as the ini file.
+Creating library 'qrun.out/work'.
+QuestaSim-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+Start time: 07:59:47 on Nov 09,2026
+vlog -timescale 1ns/1ns -mfcu design.sv testbench.sv -work qrun.out/work -statslog qrun.out/stats_log -csession=incr 
+** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
+-- Compiling module sync_fifo
+-- Compiling module sync_fifo_sva
+** Warning: (vlog-13361) design.sv(154): No trigger event inferred in disable expression.
+-- Compiling package design_sv_unit
+-- Compiling module tb_sync_fifo
+
+Top level modules:
+	tb_sync_fifo
+** Warning: (vlog-2650) 'bind' found in compilation unit scope. Please use -mfcu -cuname to ensure that 'bind' gets elaborated.
+End time: 07:59:47 on Nov 09,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 2
+QuestaSim-64 vopt 2025.2 Compiler 2025.05 May 31 2025
+** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+Start time: 07:59:47 on Nov 09,2026
+vopt -access=rw+/. -timescale 1ns/1ns -mfcu "+acc=npr" -findtoplevels qrun.out/work+2+ -work qrun.out/work -statslog qrun.out/stats_log -csession=incr -o qrun_opt -csessionid=3 
+** Note: (vopt-220) 'modelsim.ini' is used as the ini file.
+
+Top level modules:
+	tb_sync_fifo
+
+Analyzing design...
+-- Loading module tb_sync_fifo
+-- Loading module sync_fifo
+-- Loading module sync_fifo_sva
+** Warning: (vopt-13361) design.sv(154): No trigger event inferred in disable expression.
+Optimizing 4 design-units (inlining 0/3 module instances):
+-- Optimizing package design_sv_unit(fast)
+-- Optimizing module sync_fifo_sva(fast)
+-- Optimizing module tb_sync_fifo(fast)
+-- Optimizing module sync_fifo(fast)
+Optimized design name is qrun_opt
+End time: 07:59:48 on Nov 09,2026, Elapsed time: 0:00:01
+Errors: 0, Warnings: 2
+# ** Note: (vsim-220) 'modelsim.ini' is used as the ini file.
+# vsim -batch -lib qrun.out/work -do " run -all; exit" -statslog qrun.out/stats_log qrun_opt -appendlog -l qrun.log 
+# Start time: 07:59:48 on Nov 09,2026
+# //  Questa Sim-64
+# //  Version 2025.2 linux_x86_64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.design_sv_unit(fast)
+# Loading work.tb_sync_fifo(fast)
+# Loading work.sync_fifo(fast)
+# Loading work.sync_fifo_sva(fast)
+# 
+# run -all
+# Running sync_fifo test, DEPTH=16, DATA_WIDTH=8
+# [40000] PASS: T1 reset state
+# [240000] PASS: T2 fill + overflow attempts
+# [440000] PASS: T3 drain + underflow attempts
+# [1030000] PASS: T4 simultaneous read/write
+# [1410000] PASS: T5/T6 R/W at full and empty boundaries
+# [101410000] DONE: T7 random traffic (10000 cycles)
+# [103450000] PASS: T8 reset during traffic
+# 
+# ================ SYNC FIFO TEST SUMMARY ================
+#  Writes accepted       : 4493
+#  Reads accepted        : 4478
+#  Overflow attempts     : 1219
+#  Underflow attempts    : 1219
+#  Cycle checks          : 11356
+#  Functional coverage   : 100.00 %
+#  Errors                : 0
+#  RESULT                : *** TEST PASSED ***
+# ========================================================
+# ** Note: $finish    : testbench.sv(270)
+#    Time: 113630 ns  Iteration: 1  Instance: /tb_sync_fifo
+# End time: 07:59:49 on Nov 09,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+End time: 07:59:49 on Nov 09,2026, Elapsed time: 0:00:02
+*** Summary *********************************************
+    qrun: Errors:   0, Warnings:   0
+    vlog: Errors:   0, Warnings:   2
+    vopt: Errors:   0, Warnings:   2
+    vsim: Errors:   0, Warnings:   0
+  Totals: Errors:   0, Warnings:   4
+Finding VCD file...
+./sync_fifo.vcd
+[2026-11-09 12:59:50 UTC] Opening EPWave...
+Done
