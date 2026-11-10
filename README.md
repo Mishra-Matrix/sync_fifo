@@ -111,22 +111,15 @@ Bound to the DUT with `bind`, so the RTL is untouched.
 
 ## How to Run
 
-**Questa / ModelSim** (free Questa Starter edition with Intel Quartus works):
-```
-cd sim
-vsim -c -do run_questa.do
-```
+Simulation (Questa / ModelSim):
 
-**Vivado simulator (xsim):**
-```
-cd sim
-sh run_xsim.sh
-```
+    cd sim
+    vsim -c -do run_questa.do
 
-**EDA Playground (no install):** paste the three `.sv` files, choose
-Aldec Riviera-PRO or Siemens Questa, and tick "Open EPWave after run".
+Verified with Questa 2025.2.
 
-Waveforms are dumped to `sync_fifo.vcd` (viewable in GTKWave).
+Synthesis: Vivado, out-of-context mode, `rtl/sync_fifo.sv` with a 10 ns
+clock constraint.
 
 ## Results
 
@@ -157,6 +150,5 @@ sync_fifo/
 ├── sva/sync_fifo_sva.sv    # Assertions + bind
 ├── tb/tb_sync_fifo.sv      # Self-checking testbench
 ├── sim/run_questa.do       # Questa/ModelSim script
-├── sim/run_xsim.sh         # Vivado xsim script
 └── README.md
 ```
