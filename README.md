@@ -160,7 +160,3 @@ sync_fifo/
 ├── sim/run_xsim.sh         # Vivado xsim script
 └── README.md
 ```
-
-## Next Step
-
-Asynchronous (dual-clock) FIFO with Gray-code pointers and 2-flop synchronizers.
